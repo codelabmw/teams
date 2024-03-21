@@ -1,0 +1,26 @@
+{
+    "name": "codelabmw/teams",
+    "description": "Provides team management logic to be paired with any UI framework.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Codelab\\Teams\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chikondi Kamwendo",
+            "email": "kondie208@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Codelab\\Teams\\Providers\\TeamsServiceProvider"
+            ]
+        }
+    }
+}
