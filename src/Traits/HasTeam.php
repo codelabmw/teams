@@ -8,6 +8,7 @@ use Codelab\Teams\Models\Team;
 
 trait HasTeam
 {
+    
     /**
      * Defines a has many relationship between an entity (parent) and a team.
      * 
@@ -15,7 +16,8 @@ trait HasTeam
      */
     public function teams(): MorphMany
     {
-        return $this->morphMany(Team::class, 'teamable');
+        $team = config('teams.team');
+        return $this->morphMany($team, 'teamable');
     }
 
     /**

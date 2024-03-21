@@ -14,6 +14,34 @@ class Team extends Model
     use HasFactory;
 
     /**
+     * The table name for the teams model.
+     * 
+     * @var string
+     */
+    protected $table = 'teams';
+
+    /**
+     * The relationship name of the resource polymorphic relationship.
+     * 
+     * @var string
+     */
+    protected $resourceRelationshipName = 'resourceable';
+
+    /**
+     * The resources pivot table name.
+     * 
+     * @var string
+     */
+    protected $resourcePivotName = 'resource_team';
+
+    /**
+     * The foreign key name on resources pivot table.
+     * 
+     * @var string
+     */
+    protected $resourcesForeignPivotKey = 'team_id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -101,5 +129,21 @@ class Team extends Model
         }
 
         return $member;
+    }
+
+    /**
+     * Helper function to create a morph to many relationship on team resources.
+     * 
+     * @param string $related
+     * @return MorphToMany
+     */
+    public function morphedByResource($related)
+    {
+        return $this->morphedByMany(
+            $related,
+            $this->resourceRelationshipName,
+            $this->resourcePivotName,
+            $this->resourcesForeignPivotKey,
+        );
     }
 }

@@ -12,9 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('member_team', function (Blueprint $table) {
-            $table->integer('memberable_id')->primary();
-            $table->string('memberable_type');
+        Schema::create('resource_team', function (Blueprint $table) {
+            $table->integer('resourceable_id')->primary();
+            $table->string('resourceable_type');
             $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete();
             $table->integer('status')->default(Status::ACTIVE);
             $table->timestamps();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('member_team');
+        Schema::dropIfExists('resource_team');
     }
 };

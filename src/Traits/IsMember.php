@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait IsMember
 {
+    
     /**
      * Defines a has many relationship between a member and teams membered.
      * 
@@ -16,7 +17,8 @@ trait IsMember
      */
     public function memberTeams(): MorphToMany
     {
-        return $this->morphToMany(Team::class, 'memberable', 'member_team');
+        $team = config('teams.team');
+        return $this->morphToMany($team, 'memberable', 'member_team');
     }
 
     /**
@@ -69,7 +71,8 @@ trait IsMember
      */
     private function findTeamOrFail($id): Team
     {
-        $team = Team::find($id);
+        $team_class = config('teams.team');
+        $team = $team_class::find($id);
 
         if (!$team) {
             throw new TeamNotFoundException;
