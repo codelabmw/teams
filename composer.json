@@ -14,7 +14,7 @@
             "email": "kondie208@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "alpha",
     "require": {},
     "extra": {
         "laravel": {
